@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 void solucao01(){
     int max = 0;
@@ -114,6 +115,72 @@ void solucao06(){
         printf("%f \n", salarioReaj[i]);
     }
 }
+void solucao07(){
+    int i , menos10=0, menos20=0, mais20=0;
+    float precoCompra[3], precoVenda[3], lucro;
+    
+    for(i=0; i<3;i++){
+        printf("\n Digite o preco de compra do produto:\n");
+        scanf("%f", &precoCompra[i]);
+        printf("\n Digite o preco de venda do produto:\n");
+        scanf("%f", &precoVenda[i]);
+        lucro = (precoVenda[i]/ precoCompra[i]-1) * 100;
+        printf("\n %f\n",lucro);
+        if (lucro<10)
+            menos10++;
+        else
+        if(lucro<=20)
+            menos20++;
+        else 
+            mais20++;
+    }      
+        printf("\n qtde com 20 porcento de lucro: %d\n", menos10);
+        printf("\n qtde com 20 porcento de lucro: %d\n", menos20);
+        printf("\n qtde com mais de 20porcento de lucro: %d\n", mais20);
+ 
+}
+void solucao08(){
+    int i , codigo[3], quantidade[3],resposta;
+    float vlrcompra[3], vlrvenda[3];
+    for(i=0;i<3;i++){
+        printf("\nDigite o codigo do produto:\n");
+        scanf("%d", &codigo[i]);
+        printf("\nDigite a quantidade do produto:\n");
+        scanf("%d", &quantidade[i]);
+        printf("\nDigite o valor de compra do produto:\n");
+        scanf("%f", &vlrcompra[i]);
+        printf("\nDigite o valor de venda do produto:\n");
+        scanf("%f", &vlrvenda[i]);
+    }
+    printf("\n1 - listar todos os produtos\n");
+    printf("\n2 - listar produto por codigo\n");
+    scanf("%d", &resposta);
+    if (resposta == 1) {
+        printf("\nCodigo \t Quantidade \t Valor Compra \t Valor Venda \n");
+        for (i=0; i<3; i++) {
+            printf("%d \t",codigo[i]);
+            printf("%d \t\t",quantidade[i]);
+            printf("%f \t",vlrcompra[i]);
+            printf("%f \n",vlrvenda[i]);
+        }
+    }
+    else if (resposta == 2) {
+        printf("\nDigite o codigo do produto:\n");
+        scanf("%d", &resposta);
+        printf("\nCodigo \t Quantidade \t Valor Compra \t Valor Venda \n");
+        for (i=0; i<3; i++) {
+            if (codigo[i] == resposta) {
+                printf("%d \t",codigo[i]);
+                printf("%d \t\t",quantidade[i]);
+                printf("%f \t",vlrcompra[i]);
+                printf("%f \n",vlrvenda[i]);
+                break;
+            }
+        }
+    }
+    else
+        printf("Opcao invalida! \n");
+}
 int main() {
    //1. Faça umprograma em C que armazene 15 números inteiros em um vetor e depois
     //permita que o usuário digite um número inteiro para ser buscado no vetor, se
@@ -142,18 +209,18 @@ int main() {
     //e armazenar o novo salário sabendo-se que o reajuste foi de 8%. Imprimir uma
     //listagemnumerada com o salário e o novo salário. Declare quantos vetores forem
     //necessários.
-    solucao06();
+    //solucao06();
     //7. Crie umprograma que leia o preço de compra e o preço de venda de 100mercadorias
     //(utilize vetores). Ao final, o programa deverá imprimir quantas mercadorias
     //proporcionam:
     //• lucro < 10%
     //• 10% <= lucro <= 20%
     //• lucro > 20%
-
+    //solucao07();
     //8. Construa umprograma que armazene o código, a quantidade, o valor de compra
     //e o valor de venda de 30 produtos. A listagempode ser de todos os produtos ou
     //somente de umao se digitar o código.
-
+    solucao08();
     //9. Faça um programa em C que leia dois conjuntos de números inteiros, tendo
     //cada um 10 elementos. Ao final o programa deve listar os elementos comuns aos
     //conjuntos.
@@ -210,3 +277,5 @@ int main() {
 
     //20. Faça umprograma que leia a matrícula e a média de 100 alunos. Ordene da maior
     //para a menor nota e imprima uma relação contendo todas as matrículas e médias.
+    return 0;
+}
